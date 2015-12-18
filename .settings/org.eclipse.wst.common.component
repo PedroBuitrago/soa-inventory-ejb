@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?><project-modules id="moduleCoreId" project-version="1.5.0">
+    <wb-module deploy-name="soa-inventory-ejb">
+        <wb-resource deploy-path="/" source-path="/ejbModule" tag="defaultRootSource"/>
+        <property name="ClientJARURI" value="soa-inventory-ejbclient.jar"/>
+        <property name="ClientProject" value="soa-inventory-ejbclient"/>
+        <property name="java-output-path" value="/soa-inventory-ejb/build/classes"/>
+    </wb-module>
+</project-modules>
