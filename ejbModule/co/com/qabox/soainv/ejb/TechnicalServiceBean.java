@@ -3,7 +3,9 @@ package co.com.qabox.soainv.ejb;
 import javax.ejb.Local;
 import javax.ejb.Remote;
 import javax.ejb.Stateful;
+import javax.ejb.Stateless;
 import javax.enterprise.context.RequestScoped;
+import javax.faces.bean.ViewScoped;
 import javax.inject.Inject;
 
 import co.com.qabox.soainv.to.TechnicalServiceTO;
@@ -11,10 +13,10 @@ import co.com.qabox.soainv.to.TechnicalServiceTO;
 /**
  * Session Bean implementation class TechnicalServiceBean
  */
-@Stateful
+@Stateless
 @Local(TechnicalServiceLocal.class)
 @Remote(TechnicalServiceRemote.class)
-@RequestScoped
+@ViewScoped
 public class TechnicalServiceBean implements TechnicalServiceLocal, TechnicalServiceRemote {
 	
     /**
