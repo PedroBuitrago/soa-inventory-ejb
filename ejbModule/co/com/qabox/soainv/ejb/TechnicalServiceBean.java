@@ -2,11 +2,8 @@ package co.com.qabox.soainv.ejb;
 
 import javax.ejb.Local;
 import javax.ejb.Remote;
-import javax.ejb.Stateful;
 import javax.ejb.Stateless;
-import javax.enterprise.context.RequestScoped;
 import javax.faces.bean.ViewScoped;
-import javax.inject.Inject;
 
 import co.com.qabox.soainv.to.TechnicalServiceTO;
 
