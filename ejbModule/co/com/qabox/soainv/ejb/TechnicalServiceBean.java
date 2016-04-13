@@ -4,6 +4,8 @@ import javax.ejb.Local;
 import javax.ejb.Remote;
 import javax.ejb.Stateless;
 import javax.faces.bean.ViewScoped;
+import javax.persistence.EntityManager;
+import javax.persistence.PersistenceContext;
 
 import co.com.qabox.soainv.to.TechnicalServiceTO;
 
@@ -14,21 +16,18 @@ import co.com.qabox.soainv.to.TechnicalServiceTO;
 @Local(TechnicalServiceLocal.class)
 @Remote(TechnicalServiceRemote.class)
 @ViewScoped
-public class TechnicalServiceBean implements TechnicalServiceLocal, TechnicalServiceRemote {
+public class TechnicalServiceBean extends AbstractEEServices<TechnicalServiceTO> implements TechnicalServiceLocal, TechnicalServiceRemote {
 	
-    /**
-     * Default constructor. 
-     */
+	 @PersistenceContext(unitName = "soaInvPersisteceUnit")
+	 private EntityManager em;
+	
     public TechnicalServiceBean() {
-        // TODO Auto-generated constructor stub
+       super(TechnicalServiceTO.class);
     }
     
-    public boolean saveInfo(TechnicalServiceTO to){
-    	System.out.println("############################");
-    	System.out.println(to.getName());
-    	System.out.println("############################");
-    	return true;
+    @Override
+    protected EntityManager getEntityManager() {
+        return em;
     }
-    
 
 }
