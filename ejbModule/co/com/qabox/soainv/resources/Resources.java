@@ -8,4 +8,6 @@ public class Resources {
     
     @Produces
     private TechnicalServiceTO techServTo;
+    
+    
 }

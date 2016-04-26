@@ -6,11 +6,11 @@ import javax.persistence.EntityManager;
 
 import co.com.qabox.soainv.exception.SoaInventoryException;
 
-public abstract class AbstractEEServices<T> implements EEServicesInterface<T>{
+public abstract class AbstractDAOServices<T> implements EEServicesInterface<T>{
 	
 	private Class<T> entityClass;
 
-    public AbstractEEServices(Class<T> entityClass) {
+    public AbstractDAOServices(Class<T> entityClass) {
         this.entityClass = entityClass;
     }
 
