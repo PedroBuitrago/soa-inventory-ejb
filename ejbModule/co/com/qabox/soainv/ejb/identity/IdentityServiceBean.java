@@ -4,6 +4,7 @@ import java.util.Collection;
 
 import javax.ejb.LocalBean;
 import javax.ejb.Stateless;
+import javax.inject.Inject;
 
 import co.com.qabox.soainv.exception.IntegrationException;
 import co.com.qabox.soainv.to.identity.IdentityDTO;
@@ -18,7 +19,8 @@ import co.com.qabox.soainv.to.identity.RoleDTO;
 @LocalBean
 public class IdentityServiceBean implements IdentityServiceLocal {
 
-    /**
+    
+	/**
      * Default constructor. 
      */
     public IdentityServiceBean() {
@@ -35,15 +37,39 @@ public class IdentityServiceBean implements IdentityServiceLocal {
 			
 			System.out.println("Pasamos la validacion basica");
 			if ( identity.getUser().equalsIgnoreCase("pmbtgun@gmail.com")){
-				System.out.println("El usauruio es " + identity.getUser());
+				System.out.println("El usuario es " + identity.getUser());
 				identity.setId(Long.valueOf(1));
-				identity.setFirtName("Pedro");
+				identity.setFirstName("Pedro");
 				identity.setLastName("Buitrago");
 				identity.setEmail("pmbtgun@gmail.com");
 				
 				RoleDTO rol = identity.getRole();
 				rol.setId(Long.valueOf(1));
-				rol.setName("Principal");
+				rol.setName("Desarollador: " + identity.getRole().getCode());
+				
+				PermissionDTO perms = new PermissionDTO();
+				perms.setName("FULL ACCESS");
+				byte[] crud = {0,0,0,0};
+				perms.setCRUD(crud);
+				perms.setId(Long.valueOf(1));
+				perms.setBusinessObject("objeto 1");
+				
+				
+				rol.setPermissions(new PermissionDTO[]{perms});
+				identity.setRole(rol);
+				
+				
+				return identity;
+			}else if ( identity.getUser().equalsIgnoreCase("ron@gmail.com")){
+				System.out.println("El usuario es " + identity.getUser());
+				identity.setId(Long.valueOf(2));
+				identity.setFirstName("Ronald");
+				identity.setLastName("Muñoz");
+				identity.setEmail("ron@gmail.com");
+				
+				RoleDTO rol = identity.getRole();
+				rol.setId(Long.valueOf(2));
+				rol.setName("Arquitecto: " + identity.getRole().getCode());
 				
 				PermissionDTO perms = new PermissionDTO();
 				perms.setName("FULL ACCESS");
